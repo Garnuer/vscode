@@ -1,3 +1,10 @@
-#nva{
-    background: #000;
+body{
+    margin: 0px;
+}
+#a{
+ float:right;
+ position: relative;
+}
+#b{
+    width: 26px;
 }

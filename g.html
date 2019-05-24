@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //创建日期对象
+     var date =new Date();
+     //获得日期的各个部分
+     var year  =date.getYear()+1900;
+     var month = date.getMonth()+1;
+     var data = date.getDate();
+
+     var hour = date.getHours();
+     var second = date.getSeconds();
+     var minute = date.getMinutes();
+     console.log("随机数:"+(20*Math.random()));
+    console.log(year+"年"+month+"月"+data+"日："+hour+"时"+minute+"分"+second+"秒");
+    var str="ajd kajhfhuy  aaa bbb ccc"
+    console.log("第位数字"+str.charAt(3));
+    console.log(str.indexOf(' '));
+    console.log(str.substr(3 ,5));
+    console.log(str.substring(3,8));
+    var strs =str.split("");
+    for(var i=0;i<strs.length;i++){
+        console.log(strs[i]);
+    }
+    var array = [1,2,3,4,5,6];
+    array.push(99);
+    array.pop();
+    array.splice(1,2,777,888,999);
+    array.sort();
+    for(var num in array){
+      console.log(array[num]);
+    }
+    </script>
+</body>
+</html>

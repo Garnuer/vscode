@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      #con {
+          width: 800px;
+          height: 600px;
+          margin: 0px auto;
+
+      }
+      #nav {
+        width: 200px;
+        height: 100%;
+        background: #cc00cc;
+        float: left;
+      }
+      #context {
+        width: 600px;
+        height: 100%;
+        background: #00cc00;
+        float: left;
+      }
+      a{
+          text-decoration: none;
+      }
+      #nav li{
+       width: 200px;
+       height: 60px;
+       text-align: center;
+       line-height: 60px;
+       /* 相对定位 */
+       position: relative;
+      }
+      #nav ul{
+          list-style: none;
+      }
+      .pop{
+          width: 400px;
+          height: 200px;
+          background:#ffffff;
+          position: absolute;
+          /* 控制上标签左标签 */
+          top: 0px;
+          left: 200px;
+          /* 隐藏 */
+          display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="con">
+    <div id="nav">
+      <ul>
+        <li onmouseover="show('nav1')" onmouseout="hide('nav1')">
+          <a href="#">这是香港</a>
+          <div class="pop" id="nav1">这是想，u1ci1</div>
+        </li>
+        <li  onmouseover="show('nav2')" onmouseout="hide('nav2')">
+          <a href="#">这是澳门</a>
+          <div class="pop" id="nav2">这是想，u1ci1</div>
+        </li>
+        <li  onmouseover="show('nav3')" onmouseout="hide('nav3')">
+          <a href="#">这是非洲</a>
+          <div class="pop" id="nav3">这是想，u1ci1</div>
+        </li>
+      </ul>
+    </div>
+    <div id="context"></div>
+</div>
+  </body>
+  <script type="text/javascript">
+  function show(pop_id){
+  var pop = document.getElementById(pop_id);
+  pop.style.display = "block";
+  }
+  function hide(pop_id){
+  var pop = document.getElementById(pop_id);
+  pop.style.display = "none";
+  
+  }
+  </script>
+</html>

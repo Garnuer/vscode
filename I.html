@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>location对象的使用方法</title>
+</head>
+<body>
+    <input type="text" id="url" placeholder="请输入网址">
+    <input type="button" value="跳转" onclick="a()">
+    <input type="button" value="刷新" onclick="b()">
+    <script type="text/javascript">
+     function a(){
+         var url = document.getElementById("url").value;
+        // location.href=url;
+        location.replace(url);
+     }
+     function b(){
+         location.reload();
+     }
+    
+    </script>
+</body>
+</html>

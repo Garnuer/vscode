@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <select id="province" onchange="fillCity()">
+        <option value="">请选择省份</option>
+        <option value="湖北">湖北</option>
+        <option value="武汉">武汉</option>
+        <option value="长沙">襄阳</option>
+      </select>
+      <select id="city">
+        <option>请选择城市</option>
+      </select>
+    </form>
+    <script type="text/javascript">
+      //定义保存的二维数组
+      var cities = [["武汉","宜昌","襄阳"],["长沙","岳阳","常德"]];
+      function fillCity() {
+        //定位省份下拉列表
+        var province = document.getElementById("province");
+        //获得选择省份的下标
+       var index =province.selectedIndex-1;
+        //获得省份的城市数组
+        var cityNames = cities[index];
+        //填充城市到城市列表中
+        var city = document.getElementById("city");
+        for (var i = 0;i<cityNames.length; i++) {
+          //给城市列表添加一个选项
+          city.options[i+1] = new Option(cityNames[i], cityNames[i]);
+        }
+      }
+    </script>
+  </body>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="image/1.jpg" alt="图片" height="300px" width="200px" id="myimg">
+    <form action="" method="POST">
+       <input type="text" id="img_url" placeholder="请输入图片的地址">
+       <input type="button" value="修改" onclick="changeImage" >
+
+    </form>
+    <script type="text/javascript">
+      //修改图片
+      function changeImage(){
+          //定位图片标签
+          var myimg = document.getElementById("myimg");
+          //定位文本框
+          var imgurl = document.getElementById('img_url');
+          //将文本框的值赋给图片的地址
+          myimg.src = imgurl.value;
+      }
+    
+    </script>
+</body>
+</html>
