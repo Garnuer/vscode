@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>颜色的变幻</title>
+    <style type="text/css">
+     #a{
+         width: 300px;
+         height: 200px;
+         background: red;
+     }
+    </style>
+</head>
+<body>
+    <div id="a">
+
+    </div>
+    <script type="text/javascript">
+    var colors = ["orange","green","yellow","blue"];
+
+    var index=0;
+    function changedcolor(){
+        document.getElementById("a").style.backgroundColor=colors[index++];
+        if(index==colors.length){
+            index=0;
+        }
+    }
+    setInterval("changedcolor()",2000);
+    </script>
+</body>
+</html>
