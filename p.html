@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+// onblur 和 onmouseover的比较
+    function on(){
+        alert("触发ommoursever");
+    }
+    function out(){
+        alert("失去焦点，触发onblur");
+    }
+    
+    </script>
+</head>
+<body>
+    <input type="text" onblur="out()">
+    <input type="button" onmouseover="on()" value="提交">
+</body>
+</html>
