@@ -1,0 +1,46 @@
+p{
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+}
+a{
+  text-decoration: none;
+}
+/* #top模块内界面 样式*/
+.top{
+  line-height: 30px;
+  font-size: 13px;
+  color: #868686;
+}
+.top .call{
+  float: left;
+  padding-left: 20px;
+  background: url(../img/icon-call.png) no-repeat center left;
+
+}
+.top .welcome{
+  float: right;
+}
+.top a{
+  color: #2da5e1;
+  padding-left: 10px;
+}
+/* #header 模块内样式*/
+.header .logo{
+  width: 403px;
+  height: 74px;
+  padding: 9px 0;
+  display: inline-block;
+}
+.header .logo img{
+ width: 100%;
+ height: 100%;
+}
+.header .search{
+  width: 326px;
+  height: 38px;
+  position: absolute;
+  right: 0px;
+  top: 29px;
+  background-color: orange;
+}
