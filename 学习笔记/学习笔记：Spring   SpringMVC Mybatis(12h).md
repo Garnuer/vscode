@@ -740,3 +740,13 @@ Subversion(SVN) 是一个开源的版本控制系統, 也就是说 Subversion �
 
 #### 依赖注入，依赖查找DL，Spring不仅能创建对象，能够保存对象与对象之间的关联关系，自动赋值，三种赋值方法：构造方法，set方法，直接赋值。
 
+## SpringBoot三大特性
+
+组建自动装配：web mvc，web flux， jdbc
+
+嵌入式web容器：tomcat，jetty及undertow
+
+生产准备特性：指标，健康检查，外部花配置等。
+
+
+
