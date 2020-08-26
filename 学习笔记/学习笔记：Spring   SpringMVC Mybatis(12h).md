@@ -595,7 +595,7 @@ public class Loginintercaptor implements HandlerInterceptor {
 
 ```xml
 <!--Spring上传配置 -->
-    <bean id="multipartResolver"
+    <bean id="   "
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- one of the properties available; the maximum file size in bytes -->
         <property name="maxUploadSize" value="100000"/>
@@ -614,7 +614,7 @@ public class Loginintercaptor implements HandlerInterceptor {
 
  回忆（hibernate）：
 
-​                              建立对象关系映射。
+​                              建立对象关系映射      
 
 ​                              建立核心配置文档
 
