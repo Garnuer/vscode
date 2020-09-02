@@ -750,3 +750,222 @@ Subversion(SVN) 是一个开源的版本控制系統, 也就是说 Subversion �
 
 
 
+## SpringBoot项目结果 开发热部署
+
+  安装jerber插件，并激活。
+
+熟悉springboot下的三层结构。
+
+前后端传参数代码如下
+
+```java
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+//前端引擎jar
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+//伪热部署，但是在操作的过程中，并没有重新启动。
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+
+```
+
+```java
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+//这里介绍了一些注解与spring mvc的不一样的地方
+@Controller
+@RequestMapping("/List")
+public class MainController {
+
+    @RequestMapping("/list")
+    public String list(ModelMap map){
+
+        map.addAttribute("name","zfg");
+
+        return "list"; //寻找后端以这个名字的templates下的html的文件。
+    }
+}
+```
+
+```html
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<h1 th:text="${name}"> helloword</h1>
+</html>
+//之前是在templates中创建的html5的前端页面，不知道为什么无法传递参数。于是后来换成了file的创建形式。
+```
+
+## SpringBoot web项目整合数据源。
+
+导入jar
+
+```xml
+ <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+```
+
+写好spring的三层架构Controller,Dao,Service层
+
+```java
+@Entity//加上实体类标签
+@Table(name ="STUDENT")//数据库对应的表名称
+public class Student {
+    private Integer id;
+    private String names;
+
+    @Id   // id标识
+    //    JPA提供的四种标准用法为TABLE,SEQUENCE,IDENTITY,AUTO. 
+    //    TABLE：使用一个特定的数据库表格来保存主键。 
+    //    SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。 
+    //    IDENTITY：主键由数据库自动生成（主要是自动增长型） 
+    //    AUTO：主键由程序控制。 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+        this.names = names;
+    }
+}
+
+```
+
+```java
+//继承JpaRepository<>泛型里面的第一个参数是实体类，第二个是ID的类型
+public interface StudentRepository extends JpaRepository<Student,Integer> {
+
+}
+
+```
+
+```java
+@Service
+public class StudentService {
+
+    @Autowired
+    StudentRepository studentRep;
+
+    public List<Student> findAll(){
+      List<Student> findAll =  studentRep.findAll();
+        return findAll;
+    }
+}
+```
+
+```java
+@Controller
+@RequestMapping("/Student")
+public class MainController {
+
+    @Autowired
+    StudentService studentSer;
+
+    @RequestMapping("/list")
+    public String getStudentSer(Model map) {//与前端交互需要有参数Model或者是ModelAndView
+     List<Student> list = studentSer.findAll();
+     map.addAttribute("list",list);
+        return "list";
+    }
+}
+```
+
+```html
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<body>
+<table border="1px" bgcolor="#faebd7">
+    <tr>
+        <th>ID</th>
+        <th>Names</th>
+    </tr>
+    <tr th:each="Student : ${list}">
+        <td th:text="${Student.id}"></td>
+        <td th:text="${Student.names}"></td>
+    </tr>
+</table>
+</body>
+</html>
+```
+
+## mybatis
+
+1.传统项目里mybatis怎么用
+
+![image-20200902112713857](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20200902112713857.png)
+
+2.springboot里mybatis怎么集成
+
+3.增删改查
+
+4.分页
+
+5.逆向生成
+
+6.登录认证
+
+mybatis plus -》controller
